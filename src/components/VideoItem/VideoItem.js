@@ -53,10 +53,10 @@ const StyledVideoThumbnail = styled.img`
 
 const StyledVideoTitle = styled.p`
   margin: 0 0 0.3em;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 `;
 
 const StyledChannelTitle = styled.p`
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
 `;
