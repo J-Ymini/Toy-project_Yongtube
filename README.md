@@ -2,7 +2,7 @@
 
 1. 프로젝트 이름: YongTube
 
-2. 프로젝트 목적: Postman(Youtube API 사용), axios, async, await학습을 위한 토이 프로젝트입니다.
+2. 프로젝트 목적: Postman(Youtube API 사용), axios, async, await 학습을 위한 개인 토이 프로젝트입니다.
 
 3. 사용된 기술 스택:
 
@@ -19,4 +19,4 @@
 
    - query를 사용하여 간단한 검색기능 구현
 
-![](https://images.velog.io/images/dydalsdl1414/post/d8b31046-4cd1-4e4d-b62e-afd1e15186a0/toy1.gif)
+![Peek 2021-08-07 17-06](https://user-images.githubusercontent.com/75535651/128593474-54babcdf-80a8-424f-adf4-39e071125569.gif)
