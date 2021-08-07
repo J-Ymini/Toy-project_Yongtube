@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import styled from 'styled-components';
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch, onLogoClick }) {
   const inputRef = useRef();
 
   const handleSearch = () => {
@@ -22,7 +22,11 @@ export default function SearchBar({ onSearch }) {
 
   return (
     <StyledContainer>
-      <StyledLogoContainer>
+      <StyledLogoContainer
+        onClick={() => {
+          onLogoClick();
+        }}
+      >
         <StyledImage src="/images/logo.png" />
         <StyledTitle>YongTube</StyledTitle>
       </StyledLogoContainer>
@@ -56,6 +60,7 @@ const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 1em;
+  cursor: pointer;
 `;
 
 const StyledTitle = styled.h1`

@@ -3,12 +3,19 @@ import VideoItem from '../VideoItem/VideoItem';
 
 import styled from 'styled-components';
 
-export default function VideoList({ videos }) {
+export default function VideoList({ videos, onVideoClick, display }) {
   return (
     <StyledContainer>
       {videos &&
         videos.map(video => {
-          return <VideoItem key={video.id} video={video}></VideoItem>;
+          return (
+            <VideoItem
+              key={video.id}
+              video={video}
+              onVideoClick={onVideoClick}
+              display={display}
+            ></VideoItem>
+          );
         })}
     </StyledContainer>
   );

@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function VideoItem({ video }) {
+export default function VideoItem({ video, onVideoClick, display }) {
   const { thumbnails, title, channelTitle } = video.snippet;
+  console.log(display);
+
   return (
-    <StyledContainer>
+    <StyledContainer
+      onClick={() => {
+        onVideoClick(video);
+      }}
+      display={display}
+    >
       <StyledVideo>
         <StyledVideoThumbnail
           alt=" video thumnail"
@@ -21,7 +28,7 @@ export default function VideoItem({ video }) {
 
 const StyledContainer = styled.li`
   margin-bottom: 0.2em;
-  width: 50%;
+  width: ${({ display }) => (display ? '100%' : '50%')};
   padding: 0.5em;
   transition: transform 0.3s;
 
