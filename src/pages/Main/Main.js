@@ -3,7 +3,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import VideoList from '../../components/VideoList/VideoList';
 import Detail from '../Detail/Detail';
 
-import Youtube from '../../service/youtube';
+import Youtube from '../../service/youtube_fetch';
 
 import styled from 'styled-components';
 
@@ -14,6 +14,10 @@ export default function Main({ history }) {
   const goToHomepage = useCallback(() => {
     history.push('/');
     setSelectedVideo(null);
+    youtube
+      .mostPopular() //
+      .then(setVideos)
+      .catch(console.log);
   }, []);
 
   const selectVideo = useCallback(video => {
