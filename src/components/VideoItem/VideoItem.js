@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
-export default function VideoItem({ video, onVideoClick, display }) {
+function VideoItem({ video, onVideoClick, display }) {
   const { thumbnails, title, channelTitle } = video.snippet;
-  console.log(display);
 
   return (
     <StyledContainer
@@ -25,6 +24,8 @@ export default function VideoItem({ video, onVideoClick, display }) {
     </StyledContainer>
   );
 }
+
+export default memo(VideoItem);
 
 const StyledContainer = styled.li`
   margin-bottom: 0.2em;

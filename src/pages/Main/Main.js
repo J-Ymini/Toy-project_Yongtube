@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import VideoList from '../../components/VideoList/VideoList';
 import Detail from '../Detail/Detail';
@@ -11,14 +11,14 @@ export default function Main({ history }) {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const goToHomepage = () => {
+  const goToHomepage = useCallback(() => {
     history.push('/');
     setSelectedVideo(null);
-  };
+  }, []);
 
-  const selectVideo = video => {
+  const selectVideo = useCallback(video => {
     setSelectedVideo(video);
-  };
+  }, []);
 
   const search = query => {
     youtube
@@ -36,6 +36,8 @@ export default function Main({ history }) {
       .then(setVideos)
       .catch(console.log);
   }, []);
+
+  console.log('header');
 
   return (
     <StyledContainer>

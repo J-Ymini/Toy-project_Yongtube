@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 
 import styled from 'styled-components';
 
-export default function SearchBar({ onSearch, onLogoClick }) {
+function SearchBar({ onSearch, onLogoClick }) {
   const inputRef = useRef();
 
   const handleSearch = () => {
@@ -42,6 +42,8 @@ export default function SearchBar({ onSearch, onLogoClick }) {
     </StyledContainer>
   );
 }
+
+export default memo(SearchBar);
 
 const StyledContainer = styled.header`
   display: flex;
