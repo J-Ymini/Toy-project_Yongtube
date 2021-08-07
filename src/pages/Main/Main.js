@@ -9,11 +9,17 @@ export default function Main() {
   const [videos, setVideos] = useState([]);
 
   const search = query => {
-    youtube.search(query).then(setVideos).catch(console.log);
+    youtube
+      .search(query) //
+      .then(setVideos)
+      .catch(console.log);
   };
 
   useEffect(() => {
-    youtube.mostPopular().then(setVideos).catch(console.log);
+    youtube
+      .mostPopular() //
+      .then(setVideos)
+      .catch(console.log);
   }, []);
 
   return (
@@ -28,4 +34,4 @@ const StyledContainer = styled.div`
   max-width: 80rem;
 `;
 
-const youtube = new Youtube();
+const youtube = new Youtube(process.env.REACT_APP_YOUTUBE_API_KEY);
