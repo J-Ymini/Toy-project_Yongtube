@@ -1,9 +1,11 @@
 import React, { useRef, memo } from 'react';
 
+import { INavEventHandler } from '../../interfaces/interfaces';
+
 import styled from 'styled-components';
 
-function SearchBar({ onSearch, onLogoClick }) {
-  const inputRef = useRef();
+function SearchBar({ onSearch, onLogoClick }: INavEventHandler): JSX.Element {
+  const inputRef = useRef<HTMLInputElement>(null!);
 
   const handleSearch = () => {
     const { value } = inputRef.current;
@@ -14,8 +16,8 @@ function SearchBar({ onSearch, onLogoClick }) {
     handleSearch();
   };
 
-  const onKeyPress = event => {
-    if (event.code === 'Enter') {
+  const onKeyPress = (e: React.KeyboardEvent) => {
+    if (e.code === 'Enter') {
       handleSearch();
     }
   };

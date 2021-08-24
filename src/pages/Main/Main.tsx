@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import VideoList from '../../components/VideoList/VideoList';
 import Detail from '../Detail/Detail';
@@ -7,24 +8,24 @@ import Youtube from '../../service/youtube_fetch';
 
 import styled from 'styled-components';
 
-export default function Main({ history }) {
+const Main = ({ history }: RouteComponentProps): JSX.Element => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const goToHomepage = useCallback(() => {
+  const goToHomepage = () => {
     history.push('/');
     setSelectedVideo(null);
     youtube
       .mostPopular() //
       .then(setVideos)
       .catch(console.log);
-  }, []);
+  };
 
-  const selectVideo = useCallback(video => {
+  const selectVideo = (video: React.SetStateAction<null>) => {
     setSelectedVideo(video);
-  }, []);
+  };
 
-  const search = query => {
+  const search = (query: string) => {
     youtube
       .search(query) //
       .then(video => {
@@ -41,15 +42,13 @@ export default function Main({ history }) {
       .catch(console.log);
   }, []);
 
-  console.log('header');
-
   return (
     <StyledContainer>
       <SearchBar onSearch={search} onLogoClick={goToHomepage} />
       <StyledContent>
         {selectedVideo && (
           <StyledDetail>
-            <Detail video={selectedVideo} />
+            <Detail video={selectedVideo!} />
           </StyledDetail>
         )}
         <StyledVideoList>
@@ -62,7 +61,9 @@ export default function Main({ history }) {
       </StyledContent>
     </StyledContainer>
   );
-}
+};
+
+export default Main;
 
 const StyledContainer = styled.div`
   max-width: 80rem;

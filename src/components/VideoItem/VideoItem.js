@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 
+import { IVideoItem } from '../../interfaces/interfaces';
+
 function VideoItem({ video, onVideoClick, display }) {
   const { thumbnails, title, channelTitle } = video.snippet;
 
