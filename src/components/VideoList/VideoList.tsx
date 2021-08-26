@@ -3,11 +3,17 @@ import VideoItem from '../VideoItem/VideoItem';
 
 import styled from 'styled-components';
 
-export default function VideoList({ videos, onVideoClick, display }) {
+import { IVideoList } from '../../interfaces/interfaces';
+
+export default function VideoList({
+  videos,
+  onVideoClick,
+  display,
+}: IVideoList) {
   console.log(videos);
   return (
     <StyledContainer>
-      {videos?.map(video => {
+      {videos.map(video => {
         return (
           <VideoItem
             key={video.id}

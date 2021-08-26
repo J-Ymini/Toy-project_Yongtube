@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 
-import { IVideoItem } from '../../interfaces/interfaces';
-
 function VideoItem({ video, onVideoClick, display }) {
   const { thumbnails, title, channelTitle } = video.snippet;
 
@@ -16,7 +14,7 @@ function VideoItem({ video, onVideoClick, display }) {
       <StyledVideo>
         <StyledVideoThumbnail
           alt=" video thumnail"
-          src={thumbnails.medium.url}
+          src={thumbnails?.medium.url}
         />
         <StyledMetaData>
           <StyledVideoTitle>{title}</StyledVideoTitle>

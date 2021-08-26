@@ -43,13 +43,14 @@ export interface INavEventHandler {
 
 export interface IVideoItem {
   video: IVideoInfo;
-  onVideoClick: () => void;
-  display: boolean | null;
+  onVideoClick: (video: IVideoInfo) => void;
+  display: IVideoInfo | null;
 }
 
 // VideoList Component Interface
 
 export interface IVideoList {
-  videos: IVideo[];
-  onVideoClick: () => void;
+  videos: IVideoInfo[];
+  onVideoClick: (video: IVideoInfo) => void;
+  display: IVideoInfo | null;
 }

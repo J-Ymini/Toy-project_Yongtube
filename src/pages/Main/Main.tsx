@@ -4,13 +4,15 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import VideoList from '../../components/VideoList/VideoList';
 import Detail from '../Detail/Detail';
 
+import { IVideoInfo } from '../../interfaces/interfaces';
+
 import Youtube from '../../service/youtube_fetch';
 
 import styled from 'styled-components';
 
 const Main = ({ history }: RouteComponentProps): JSX.Element => {
   const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState<IVideoInfo | null>(null);
 
   const goToHomepage = () => {
     history.push('/');
@@ -18,10 +20,10 @@ const Main = ({ history }: RouteComponentProps): JSX.Element => {
     youtube
       .mostPopular() //
       .then(setVideos)
-      .catch(console.log);
+      .catch(alert);
   };
 
-  const selectVideo = (video: React.SetStateAction<null>) => {
+  const selectVideo = (video: IVideoInfo) => {
     setSelectedVideo(video);
   };
 
@@ -32,14 +34,14 @@ const Main = ({ history }: RouteComponentProps): JSX.Element => {
         setVideos(video);
         setSelectedVideo(null);
       })
-      .catch(console.log);
+      .catch(alert);
   };
 
   useEffect(() => {
     youtube
       .mostPopular() //
       .then(setVideos)
-      .catch(console.log);
+      .catch(alert);
   }, []);
 
   return (
