@@ -14,7 +14,7 @@ function VideoItem({ video, onVideoClick, display }) {
       <StyledVideo>
         <StyledVideoThumbnail
           alt=" video thumnail"
-          src={thumbnails.medium.url}
+          src={thumbnails?.medium.url}
         />
         <StyledMetaData>
           <StyledVideoTitle>{title}</StyledVideoTitle>

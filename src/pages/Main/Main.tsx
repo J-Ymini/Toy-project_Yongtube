@@ -1,47 +1,48 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import VideoList from '../../components/VideoList/VideoList';
 import Detail from '../Detail/Detail';
+
+import { IVideoInfo } from '../../interfaces/interfaces';
 
 import Youtube from '../../service/youtube_fetch';
 
 import styled from 'styled-components';
 
-export default function Main({ history }) {
+const Main = ({ history }: RouteComponentProps): JSX.Element => {
   const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState<IVideoInfo | null>(null);
 
-  const goToHomepage = useCallback(() => {
+  const goToHomepage = () => {
     history.push('/');
     setSelectedVideo(null);
     youtube
       .mostPopular() //
       .then(setVideos)
-      .catch(console.log);
-  }, []);
+      .catch(alert);
+  };
 
-  const selectVideo = useCallback(video => {
+  const selectVideo = (video: IVideoInfo) => {
     setSelectedVideo(video);
-  }, []);
+  };
 
-  const search = query => {
+  const search = (query: string) => {
     youtube
       .search(query) //
       .then(video => {
         setVideos(video);
         setSelectedVideo(null);
       })
-      .catch(console.log);
+      .catch(alert);
   };
 
   useEffect(() => {
     youtube
       .mostPopular() //
       .then(setVideos)
-      .catch(console.log);
+      .catch(alert);
   }, []);
-
-  console.log('header');
 
   return (
     <StyledContainer>
@@ -49,7 +50,7 @@ export default function Main({ history }) {
       <StyledContent>
         {selectedVideo && (
           <StyledDetail>
-            <Detail video={selectedVideo} />
+            <Detail video={selectedVideo!} />
           </StyledDetail>
         )}
         <StyledVideoList>
@@ -62,7 +63,9 @@ export default function Main({ history }) {
       </StyledContent>
     </StyledContainer>
   );
-}
+};
+
+export default Main;
 
 const StyledContainer = styled.div`
   max-width: 80rem;

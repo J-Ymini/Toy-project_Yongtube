@@ -2,14 +2,16 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-export default function Detail({ video }) {
-  const { title, channelTitle, description } = video.snippet;
+import { IVideo } from '../../interfaces/interfaces';
 
+export default function Detail({ video }: IVideo): JSX.Element {
+  console.log(video);
+
+  const { title, channelTitle, description } = video.snippet;
   return (
     <StyledContainer>
       <iframe
         id="ytplayer"
-        type="text/html"
         width="100%"
         height="500px"
         src={`https://www.youtube.com/embed/${video.id}`}
