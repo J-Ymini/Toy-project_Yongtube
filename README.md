@@ -6,6 +6,7 @@
 
 3. 사용된 기술 스택:
 
+   - TS, JS
    - React, React hooks
    - React-router
    - Styled-component
